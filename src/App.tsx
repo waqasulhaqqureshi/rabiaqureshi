@@ -1,6 +1,5 @@
 import { ReactNode, useEffect, useRef, useState } from "react";
 import Carousel from "./components/Carousel";
-import portrait from "./assets/image-2.png";
 import {
   profile,
   experience,
@@ -64,6 +63,7 @@ const links = [
 ];
 
 const brands = ["Svenyx", "BAROSA Events", "Stylin Beauty Salon", "Rose Vale School", "MetaTrader 5", "WordPress", "MS Excel", "Photoshop"];
+const portrait = "/images/image-2.png";
 
 /* ---------- sections ---------- */
 
