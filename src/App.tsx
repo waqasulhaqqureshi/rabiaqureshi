@@ -124,11 +124,11 @@ function Header() {
 
 function Hero() {
   return (
-    <section id="home" className="hero-bg relative mx-3 mt-3 h-[860px] overflow-hidden rounded-[2rem] sm:mx-5 sm:mt-5 md:h-[1000px]">
+    <section id="home" className="hero-bg relative mx-3 mt-3 aspect-video overflow-hidden rounded-[2rem] sm:mx-5">
       <Header />
 
       {/* location badge */}
-      <div className="rise absolute left-1/2 top-24 z-20 -translate-x-1/2 sm:top-8" style={{ animationDelay: "0.1s" }}>
+      <div className="rise absolute left-1/2 top-[8%] z-20 -translate-x-1/2 sm:top-[5%]" style={{ animationDelay: "0.1s" }}>
         <div className="flex items-center gap-2 whitespace-nowrap rounded-full bg-white/60 px-4 py-1.5 text-xs backdrop-blur sm:text-base">
           <span className="text-base">📍</span>
           <span>Based in {profile.address}</span>
@@ -136,7 +136,7 @@ function Hero() {
       </div>
 
       {/* title (sits behind the portrait) */}
-      <div className="absolute inset-x-0 top-[150px] z-0 text-center leading-[0.9] sm:top-[120px]">
+      <div className="absolute inset-x-0 top-[18%] z-0 text-center leading-[0.9] sm:top-[16%]">
         <h1 className="rise text-[17vw] font-light tracking-[-0.04em] sm:text-[11vw] xl:text-[150px]" style={{ animationDelay: "0.2s" }}>
           Hi I’m {profile.first}
         </h1>
@@ -152,7 +152,7 @@ function Hero() {
       <img
         src={portrait}
         alt="Rabia Haq Qureshi portrait"
-        className="portrait-mask rise pointer-events-none absolute bottom-0 left-1/2 z-10 h-[640px] w-auto max-w-none -translate-x-1/2 sm:h-[760px] md:h-[820px] xl:h-[880px]"
+        className="portrait-mask rise pointer-events-none absolute bottom-0 left-1/2 z-10 h-[92%] w-auto max-w-none -translate-x-1/2 sm:h-[95%] md:h-[97%]"
         style={{ animationDelay: "0.5s" }}
       />
 
