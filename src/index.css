@@ -217,7 +217,7 @@ body {
   }
 }
 
-/* Phones: taller-than-16:9 card, all hero content visible and comfortable. */
+/* Phones: compact two-column layout — portrait left, content stacked right. */
 @media (max-width: 480px) {
   .hero-frame {
     aspect-ratio: 5 / 6;
@@ -226,53 +226,59 @@ body {
     top: 2.9rem;
   }
   .hero-title-group {
-    top: 5.6rem;
+    top: 5.4rem;
+  }
+  .hero-portrait-wrap {
+    left: 2cqw;
+    transform: none;
   }
   .hero-portrait {
-    height: 34cqw;
-    max-height: 34%;
+    height: 64cqw;
+    max-height: 60%;
   }
   .hero-availability {
-    left: 4cqw;
-    top: 38%;
+    left: 48cqw;
+    top: 40%;
   }
   .hero-availability-pill {
-    font-size: 0.74rem;
-    padding: 0.55em 1em;
+    font-size: 0.72rem;
+    padding: 0.55em 0.95em;
   }
   .hero-tagline {
-    right: 4cqw;
-    top: 36.5%;
-    max-width: 31cqw;
-    font-size: 0.74rem;
-    line-height: 1.4;
+    left: 48cqw;
+    right: 3cqw;
+    top: calc(40% + 2.8rem);
+    max-width: none;
+    font-size: 0.72rem;
+    line-height: 1.32;
   }
   .hero-stats {
-    left: 4cqw;
-    bottom: 3cqw;
-    max-width: 28cqw;
-    gap: 0.35rem;
+    left: 48cqw;
+    bottom: 18.5cqw;
+    max-width: none;
+    gap: 0.3rem;
   }
   .hero-stat-avatar {
-    width: 1.5rem;
-    height: 1.5rem;
-    font-size: 0.54rem;
+    width: 1.4rem;
+    height: 1.4rem;
+    font-size: 0.52rem;
   }
   .hero-stat-copy {
-    font-size: 0.59rem;
-    line-height: 1.35;
+    font-size: 0.56rem;
+    line-height: 1.3;
   }
   .hero-cta-wrap {
-    right: 2cqw;
-    bottom: 3cqw;
+    left: 48cqw;
+    right: auto;
+    bottom: 2.5cqw;
   }
   .hero-cta {
     gap: 0.35rem;
-    padding: 0.46rem 0.7rem;
-    font-size: 0.64rem;
+    padding: 0.5rem 0.8rem;
+    font-size: 0.68rem;
   }
   .hero-cta svg {
-    width: 0.78rem;
+    width: 0.8rem;
   }
 }
 .glass {
