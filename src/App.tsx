@@ -365,6 +365,10 @@ function EducationSection() {
   );
 }
 
+function whatsappLink(message: string) {
+  return `${profile.whatsapp}?text=${encodeURIComponent(message)}`;
+}
+
 function CertificatesSection() {
   return (
     <section className="relative mx-auto max-w-[1200px] px-5 py-16">
@@ -373,7 +377,7 @@ function CertificatesSection() {
         {certificates.map((c, i) => (
           <a
             key={c.title}
-            href={`${profile.website}/#certificates`}
+            href={whatsappLink(`Hi Rabia! Could you please share the "${c.title}" certificate and your CV?`)}
             target="_blank"
             rel="noreferrer"
             draggable={false}
@@ -401,10 +405,10 @@ function CertificatesSection() {
         ))}
       </Carousel>
       <p className="mt-2 text-center text-sm text-black/50">
-        Links to all certificates are available on{" "}
-        <a className="underline underline-offset-4 hover:text-ink" href={profile.website} target="_blank" rel="noreferrer">
-          {profile.websiteDisplay}
-        </a>
+        <a className="underline underline-offset-4 hover:text-ink" href={whatsappLink("Hi Rabia! Could you please share the certificates and your CV?")} target="_blank" rel="noreferrer">
+          WhatsApp me
+        </a>{" "}
+        if you need any certificate or CV.
       </p>
     </section>
   );

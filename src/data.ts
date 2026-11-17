@@ -10,6 +10,8 @@ export const profile = {
   linkedinDisplay: "linkedin.com/in/rabiaqureshihashmi",
   website: "https://rabiahaqqureshi.vercel.app",
   websiteDisplay: "rabiahaqqureshi.vercel.app",
+  whatsapp: "https://wa.me/971565420896",
+  whatsappDisplay: "wa.me/971565420896",
 };
 
 export const experience = [

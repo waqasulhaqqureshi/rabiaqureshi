@@ -68,17 +68,18 @@ body {
 }
 
 .hero-title-group {
-  top: clamp(2.75rem, 8cqw, 7.5rem);
+  top: clamp(2.5rem, 4.5cqw, 4.25rem);
 }
 .hero-title {
-  font-size: clamp(2rem, 9cqw, 9.375rem);
+  font-size: clamp(1.25rem, 8cqw, 8.5rem);
 }
 .hero-subtitle {
-  margin-top: -0.8cqw;
-  font-size: clamp(2rem, 10.5cqw, 10rem);
+  margin-top: -0.6cqw;
+  font-size: clamp(1.25rem, 9.5cqw, 9rem);
 }
 
-/* Smaller cut-out, with its bottom edge flush against the bottom of the 16:9 card. */
+/* Smaller cut-out, with its bottom edge flush against the bottom of the 16:9 card.
+   Sized so it never reaches the headline above it on any viewport. */
 .hero-portrait-wrap {
   position: absolute;
   left: 50%;
@@ -88,10 +89,16 @@ body {
 }
 .hero-portrait {
   width: auto;
-  height: 44cqw;
+  height: 31cqw;
   max-width: none;
-  max-height: 79%;
+  max-height: 55%;
   filter: drop-shadow(0 0.8cqw 1.2cqw rgba(20, 35, 8, 0.18));
+}
+@media (max-width: 480px) {
+  .hero-portrait {
+    height: 26cqw;
+    max-height: 46%;
+  }
 }
 
 .hero-availability {
@@ -141,6 +148,26 @@ body {
   right: 6cqw;
   bottom: 2cqw;
   z-index: 20;
+}
+@media (max-width: 480px) {
+  .hero-portrait-wrap {
+    left: auto;
+    right: 3cqw;
+    transform: none;
+  }
+  .hero-cta-wrap {
+    right: auto;
+    left: 4cqw;
+    bottom: 4cqw;
+  }
+  .hero-cta {
+    gap: 0.4rem;
+    padding: 0.45rem 0.8rem;
+    font-size: 0.68rem;
+  }
+  .hero-cta svg {
+    width: 0.75rem;
+  }
 }
 .hero-cta {
   gap: clamp(0.5rem, 0.8cqw, 1rem);
