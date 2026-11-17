@@ -64,7 +64,7 @@ const links = [
   { label: "Contact", href: "#contact" },
 ];
 
-const brands = ["Svenyx", "BAROSA Events", "Stylin Beauty Salon", "Rose Vale School", "MetaTrader 5", "MS Excel", "Call Center", "Office Management"];
+const brands = ["Svenyx Management", "BAROSA Events Management", "Stylin Management", "Rose Vale Management", "MetaTrader 5", "MS Excel", "Call Center", "Office Management"];
 
 /* ---------- sections ---------- */
 
@@ -207,8 +207,8 @@ function Marquee() {
     <div className="relative mx-auto mt-10 max-w-[1400px] overflow-hidden px-5 [mask-image:linear-gradient(to_right,transparent,#000_12%,#000_88%,transparent)]">
       <div className="marquee-track flex w-max items-center gap-14 py-4">
         {row.map((b, i) => (
-          <span key={i} className="flex items-center gap-3 whitespace-nowrap text-2xl font-semibold tracking-tight text-black/30 sm:text-3xl">
-            <span className="grid h-8 w-8 place-items-center rounded-full bg-black/20 text-sm text-white">{b[0]}</span>
+          <span key={i} className="flex items-center gap-4 whitespace-nowrap text-[1.72rem] font-semibold tracking-tight text-black/30 sm:text-[2.1rem]">
+            <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-black/20 text-base text-white sm:h-10 sm:w-10">{b[0]}</span>
             {b}
           </span>
         ))}
