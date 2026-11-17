@@ -1,6 +1,7 @@
 import { ReactNode, useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import Carousel from "./components/Carousel";
-import portrait from "./assets/rabia-bw.png";
+import portrait from "./assets/rabia-cutout.png";
 import {
   profile,
   experience,
@@ -71,14 +72,14 @@ function Header() {
   const [open, setOpen] = useState(false);
   return (
     <>
-      <header className="absolute inset-x-0 top-0 z-30 flex items-start justify-between px-6 pt-6 sm:px-12 sm:pt-8">
-        <a href="#home" className="font-serif text-3xl italic leading-none sm:text-4xl">
+      <header className="hero-header absolute inset-x-0 top-0 z-30 flex items-start justify-between">
+        <a href="#home" className="hero-logo font-serif italic leading-none">
           Rabia Haq
         </a>
         <button
           aria-label="Open menu"
           onClick={() => setOpen(true)}
-          className="grid h-12 w-12 place-items-center rounded-full bg-white/80 shadow-sm ring-1 ring-black/10 backdrop-blur transition hover:bg-white"
+          className="hero-menu-button grid place-items-center rounded-full bg-white/80 shadow-sm ring-1 ring-black/10 backdrop-blur transition hover:bg-white"
         >
           <span className="flex flex-col gap-[5px]">
             <i className="block h-[1.5px] w-5 bg-ink" />
@@ -88,109 +89,115 @@ function Header() {
         </button>
       </header>
 
-      <div
-        className={`fixed inset-0 z-50 bg-ink text-white transition-all duration-500 ${open ? "visible opacity-100" : "invisible opacity-0"}`}
-      >
-        <div className="mx-auto flex h-full max-w-5xl flex-col px-8 py-8">
-          <div className="flex items-center justify-between">
-            <span className="font-serif text-3xl italic">Rabia Haq</span>
-            <button
-              aria-label="Close menu"
-              onClick={() => setOpen(false)}
-              className="grid h-12 w-12 place-items-center rounded-full bg-lime text-ink"
-            >
-              <svg width="18" height="18" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round"><path d="M6 6l12 12M18 6L6 18" /></svg>
-            </button>
-          </div>
-          <nav className="flex flex-1 flex-col justify-center gap-1">
-            {links.map((l, i) => (
-              <a
-                key={l.href}
-                href={l.href}
+      {createPortal(
+        <div
+          className={`fixed inset-0 z-50 bg-ink text-white transition-all duration-500 ${open ? "visible opacity-100" : "invisible opacity-0"}`}
+        >
+          <div className="mx-auto flex h-full max-w-5xl flex-col px-8 py-8">
+            <div className="flex items-center justify-between">
+              <span className="font-serif text-3xl italic">Rabia Haq</span>
+              <button
+                aria-label="Close menu"
                 onClick={() => setOpen(false)}
-                className="group flex items-baseline gap-4 py-1 text-5xl font-light tracking-tight transition hover:text-lime sm:text-7xl"
+                className="grid h-12 w-12 place-items-center rounded-full bg-lime text-ink"
               >
-                <span className="font-serif text-lg italic text-white/40">0{i + 1}</span>
-                {l.label}
-              </a>
-            ))}
-          </nav>
-          <p className="text-sm text-white/50">{profile.email} · {profile.phoneDisplay}</p>
-        </div>
-      </div>
+                <svg width="18" height="18" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round"><path d="M6 6l12 12M18 6L6 18" /></svg>
+              </button>
+            </div>
+            <nav className="flex flex-1 flex-col justify-center gap-1">
+              {links.map((l, i) => (
+                <a
+                  key={l.href}
+                  href={l.href}
+                  onClick={() => setOpen(false)}
+                  className="group flex items-baseline gap-4 py-1 text-5xl font-light tracking-tight transition hover:text-lime sm:text-7xl"
+                >
+                  <span className="font-serif text-lg italic text-white/40">0{i + 1}</span>
+                  {l.label}
+                </a>
+              ))}
+            </nav>
+            <p className="text-sm text-white/50">{profile.email} · {profile.phoneDisplay}</p>
+          </div>
+        </div>,
+        document.body
+      )}
     </>
   );
 }
 
 function Hero() {
   return (
-    <section id="home" className="hero-bg relative mx-3 mt-3 h-[860px] overflow-hidden rounded-[2rem] sm:mx-5 sm:mt-5 md:h-[1000px]">
+    <section id="home" className="hero-frame hero-bg relative mx-3 mt-3 overflow-hidden rounded-[1.25rem] sm:mx-5 sm:mt-5 sm:rounded-[2rem]">
       <Header />
 
       {/* location badge */}
-      <div className="rise absolute left-1/2 top-24 z-20 -translate-x-1/2 sm:top-8" style={{ animationDelay: "0.1s" }}>
-        <div className="flex items-center gap-2 whitespace-nowrap rounded-full bg-white/60 px-4 py-1.5 text-xs backdrop-blur sm:text-base">
-          <span className="text-base">📍</span>
+      <div className="hero-location-wrap hidden md:block">
+        <div className="hero-location-pill rise flex items-center whitespace-nowrap rounded-full bg-white/60 backdrop-blur" style={{ animationDelay: "0.1s" }}>
+          <span className="hero-location-emoji">📍</span>
           <span>Based in {profile.address}</span>
         </div>
       </div>
 
       {/* title (sits behind the portrait) */}
-      <div className="absolute inset-x-0 top-[150px] z-0 text-center leading-[0.9] sm:top-[120px]">
-        <h1 className="rise text-[17vw] font-light tracking-[-0.04em] sm:text-[11vw] xl:text-[150px]" style={{ animationDelay: "0.2s" }}>
+      <div className="hero-title-group absolute inset-x-0 z-0 text-center leading-[0.9]">
+        <h1 className="hero-title rise whitespace-nowrap font-light tracking-[-0.04em]" style={{ animationDelay: "0.2s" }}>
           Hi I’m {profile.first}
         </h1>
         <p
-          className="rise -mt-[1.5vw] font-serif text-[18vw] italic tracking-[-0.03em] sm:text-[12.5vw] xl:text-[185px]"
+          className="hero-subtitle rise whitespace-nowrap font-serif italic tracking-[-0.03em]"
           style={{ animationDelay: "0.35s" }}
         >
           Computer Operator
         </p>
       </div>
 
-      {/* portrait: cut-out, black & white applied in CSS */}
-      <img
-        src={portrait}
-        alt="Rabia Haq Qureshi portrait"
-        className="portrait-mask portrait-bw rise pointer-events-none absolute bottom-0 left-1/2 z-10 h-[640px] w-auto max-w-none -translate-x-1/2 sm:h-[760px] md:h-[820px] xl:h-[880px]"
-        style={{ animationDelay: "0.5s" }}
-      />
+      {/* portrait: transparent-background cut-out, inset inside the 16:9 hero */}
+      <div className="hero-portrait-wrap pointer-events-none">
+        <img
+          src={portrait}
+          alt="Rabia Haq Qureshi portrait"
+          className="hero-portrait rise block"
+          style={{ animationDelay: "0.5s" }}
+        />
+      </div>
 
       {/* left: availability */}
-      <div className="rise absolute left-6 top-[58%] z-20 hidden md:left-12 md:block" style={{ animationDelay: "0.7s" }}>
-        <div className="flex items-center gap-3 rounded-full bg-white py-3 pl-3 pr-6 text-lg shadow-sm">
-          <span className="grid h-7 w-7 place-items-center rounded-full bg-lime/40">
-            <span className="h-4 w-4 rounded-full bg-lime shadow-[0_0_0_4px_rgba(180,242,60,0.4)]" />
+      <div className="hero-availability rise absolute z-20 hidden md:block" style={{ animationDelay: "0.7s" }}>
+        <div className="hero-availability-pill flex items-center rounded-full bg-white shadow-sm">
+          <span className="hero-availability-icon grid place-items-center rounded-full bg-lime/40">
+            <span className="hero-availability-dot rounded-full bg-lime shadow-[0_0_0_4px_rgba(180,242,60,0.4)]" />
           </span>
           Available for new opportunities
         </div>
       </div>
 
       {/* right: tagline */}
-      <p className="rise absolute right-6 top-[56%] z-20 hidden max-w-[300px] text-xl leading-snug md:right-12 md:block lg:max-w-[340px] lg:text-2xl" style={{ animationDelay: "0.8s" }}>
+      <p className="hero-tagline rise absolute z-20 hidden md:block" style={{ animationDelay: "0.8s" }}>
         passionate about organising data, people and ideas into smooth, reliable digital workflows.
       </p>
 
       {/* bottom-left: stats */}
-      <div className="rise absolute bottom-8 left-6 z-20 flex max-w-[240px] items-center gap-3 md:left-12" style={{ animationDelay: "0.9s" }}>
+      <div className="hero-stats rise absolute z-20 hidden items-center md:flex" style={{ animationDelay: "0.9s" }}>
         <div className="flex shrink-0 -space-x-3">
-          <span className="grid h-12 w-12 place-items-center rounded-full bg-ink text-sm text-white ring-2 ring-white">اردو</span>
-          <span className="grid h-12 w-12 place-items-center rounded-full bg-lime text-sm font-medium ring-2 ring-white">EN</span>
+          <span className="hero-stat-avatar grid place-items-center rounded-full bg-ink text-white ring-2 ring-white">اردو</span>
+          <span className="hero-stat-avatar grid place-items-center rounded-full bg-lime font-medium ring-2 ring-white">EN</span>
         </div>
-        <p className="text-xs leading-snug text-black/70">
+        <p className="hero-stat-copy text-black/70">
           Bilingual professional with <b className="font-medium text-ink">4+ years</b> across data, events &amp; sales.
         </p>
       </div>
 
       {/* bottom-right: CTA */}
-      <a
-        href="#contact"
-        className="rise absolute bottom-8 right-6 z-20 flex items-center gap-3 rounded-full bg-ink px-8 py-5 text-white shadow-[0_0_0_6px_rgba(255,255,255,0.35),0_20px_40px_-12px_rgba(0,0,0,0.5)] transition hover:scale-[1.04] md:right-[10%]"
-        style={{ animationDelay: "1s" }}
-      >
-        <Arrow />
-        <span className="font-medium">Get in Touch</span>
-      </a>
+      <div className="hero-cta-wrap rise" style={{ animationDelay: "1s" }}>
+        <a
+          href="#contact"
+          className="hero-cta flex items-center rounded-full bg-ink text-white shadow-[0_0_0_6px_rgba(255,255,255,0.35),0_20px_40px_-12px_rgba(0,0,0,0.5)] transition hover:scale-[1.04]"
+        >
+          <Arrow />
+          <span className="font-medium">Get in Touch</span>
+        </a>
+      </div>
     </section>
   );
 }

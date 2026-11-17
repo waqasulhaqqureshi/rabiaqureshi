@@ -33,6 +33,127 @@ body {
     linear-gradient(180deg, #e9f9c9 0%, #b9f23f 38%, #c9f66e 62%, #ffffff 100%);
 }
 
+/* True 16:9 hero. cqw = 1% of the hero's own width, so every element scales with the frame. */
+.hero-frame {
+  aspect-ratio: 16 / 9;
+  container-type: inline-size;
+}
+
+.hero-header {
+  padding: clamp(1rem, 2.4cqw, 2rem) clamp(1.25rem, 3cqw, 3rem);
+}
+.hero-logo {
+  font-size: clamp(1.5rem, 3cqw, 3rem);
+}
+.hero-menu-button {
+  width: clamp(2.25rem, 4cqw, 3rem);
+  height: clamp(2.25rem, 4cqw, 3rem);
+}
+
+.hero-location-wrap {
+  position: absolute;
+  left: 50%;
+  top: clamp(1rem, 2.4cqw, 2rem);
+  z-index: 20;
+  transform: translateX(-50%);
+}
+.hero-location-pill {
+  gap: clamp(0.25rem, 0.5cqw, 0.5rem);
+  padding: clamp(0.25rem, 0.5cqw, 0.375rem) clamp(0.75rem, 1.4cqw, 1rem);
+  font-size: clamp(0.625rem, 1.1cqw, 1rem);
+}
+.hero-location-emoji {
+  font-size: clamp(0.875rem, 1.3cqw, 1rem);
+  line-height: 1;
+}
+
+.hero-title-group {
+  top: clamp(2.75rem, 8cqw, 7.5rem);
+}
+.hero-title {
+  font-size: clamp(2rem, 9cqw, 9.375rem);
+}
+.hero-subtitle {
+  margin-top: -0.8cqw;
+  font-size: clamp(2rem, 10.5cqw, 10rem);
+}
+
+/* The cut-out is slightly smaller than the 16:9 frame: 48cqw = 85% of its height. */
+.hero-portrait-wrap {
+  position: absolute;
+  left: 50%;
+  bottom: 2cqw;
+  z-index: 10;
+  transform: translateX(-50%);
+}
+.hero-portrait {
+  width: auto;
+  height: 48cqw;
+  max-width: none;
+  max-height: 86%;
+  filter: drop-shadow(0 1.1cqw 1.4cqw rgba(20, 35, 8, 0.18));
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 92%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 92%, transparent 100%);
+}
+
+.hero-availability {
+  left: 3cqw;
+  top: 55%;
+}
+.hero-availability-pill {
+  gap: clamp(0.5rem, 0.8cqw, 1rem);
+  padding: clamp(0.65rem, 1cqw, 1rem) clamp(1rem, 2cqw, 1.75rem) clamp(0.65rem, 1cqw, 1rem) clamp(0.65rem, 1cqw, 1rem);
+  font-size: clamp(0.8rem, 1.25cqw, 1.125rem);
+}
+.hero-availability-icon {
+  width: clamp(1.5rem, 2cqw, 1.75rem);
+  height: clamp(1.5rem, 2cqw, 1.75rem);
+}
+.hero-availability-dot {
+  width: clamp(0.8rem, 1.1cqw, 1rem);
+  height: clamp(0.8rem, 1.1cqw, 1rem);
+}
+
+.hero-tagline {
+  right: 3cqw;
+  top: 54%;
+  max-width: 24cqw;
+  font-size: clamp(0.875rem, 1.6cqw, 1.5rem);
+  line-height: 1.25;
+}
+
+.hero-stats {
+  left: 3cqw;
+  bottom: 2cqw;
+  max-width: 22cqw;
+  gap: clamp(0.5rem, 0.8cqw, 1rem);
+}
+.hero-stat-avatar {
+  width: clamp(2rem, 3.4cqw, 3rem);
+  height: clamp(2rem, 3.4cqw, 3rem);
+  font-size: clamp(0.625rem, 0.9cqw, 0.875rem);
+}
+.hero-stat-copy {
+  font-size: clamp(0.625rem, 0.9cqw, 0.75rem);
+  line-height: 1.3;
+}
+
+.hero-cta-wrap {
+  position: absolute;
+  right: 6cqw;
+  bottom: 2cqw;
+  z-index: 20;
+}
+.hero-cta {
+  gap: clamp(0.5rem, 0.8cqw, 1rem);
+  padding: clamp(0.65rem, 1.6cqw, 1.25rem) clamp(1.25rem, 3cqw, 2rem);
+  font-size: clamp(0.7rem, 1.3cqw, 1rem);
+}
+.hero-cta svg {
+  width: clamp(0.9rem, 1.4cqw, 1.125rem);
+  height: auto;
+}
+
 .glass {
   background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.55));
   box-shadow:
@@ -74,20 +195,4 @@ body {
 .reveal.in {
   opacity: 1;
   transform: none;
-}
-
-/* black & white treatment for the hero portrait (kept in CSS, not baked into the image) */
-.portrait-bw {
-  filter: grayscale(1);
-}
-
-.portrait-mask {
-  -webkit-mask-image:
-    linear-gradient(to right, transparent 0%, #000 14%, #000 100%),
-    linear-gradient(to bottom, #000 0%, #000 78%, transparent 100%);
-  -webkit-mask-composite: source-in;
-  mask-image:
-    linear-gradient(to right, transparent 0%, #000 14%, #000 100%),
-    linear-gradient(to bottom, #000 0%, #000 78%, transparent 100%);
-  mask-composite: intersect;
 }
