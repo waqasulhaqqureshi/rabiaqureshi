@@ -76,11 +76,6 @@ body {
   transform: none;
 }
 
-/* black & white treatment for the hero portrait (kept in CSS, not baked into the image) */
-.portrait-bw {
-  filter: grayscale(1);
-}
-
 .portrait-mask {
   -webkit-mask-image:
     linear-gradient(to right, transparent 0%, #000 14%, #000 100%),

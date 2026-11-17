@@ -1,6 +1,6 @@
 import { ReactNode, useEffect, useRef, useState } from "react";
 import Carousel from "./components/Carousel";
-import portrait from "./assets/rabia-bw.png";
+import portrait from "./assets/image-2.png";
 import {
   profile,
   experience,
@@ -148,11 +148,11 @@ function Hero() {
         </p>
       </div>
 
-      {/* portrait: cut-out, black & white applied in CSS */}
+      {/* portrait */}
       <img
         src={portrait}
         alt="Rabia Haq Qureshi portrait"
-        className="portrait-mask portrait-bw rise pointer-events-none absolute bottom-0 left-1/2 z-10 h-[640px] w-auto max-w-none -translate-x-1/2 sm:h-[760px] md:h-[820px] xl:h-[880px]"
+        className="portrait-mask rise pointer-events-none absolute bottom-0 left-1/2 z-10 h-[640px] w-auto max-w-none -translate-x-1/2 sm:h-[760px] md:h-[820px] xl:h-[880px]"
         style={{ animationDelay: "0.5s" }}
       />
 
