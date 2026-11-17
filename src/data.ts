@@ -81,6 +81,8 @@ export const skillGroups = [
       "Data entry & record management",
       "Report preparation",
       "Internet & email handling",
+      "Office management",
+      "Speaking & call handling",
       "Office coordination",
     ],
   },

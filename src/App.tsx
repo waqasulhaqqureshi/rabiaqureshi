@@ -64,7 +64,7 @@ const links = [
   { label: "Contact", href: "#contact" },
 ];
 
-const brands = ["Svenyx", "BAROSA Events", "Stylin Beauty Salon", "Rose Vale School", "MetaTrader 5", "WordPress", "MS Excel", "Photoshop"];
+const brands = ["Svenyx", "BAROSA Events", "Stylin Beauty Salon", "Rose Vale School", "MetaTrader 5", "MS Excel", "Call Center", "Office Management"];
 
 /* ---------- sections ---------- */
 
@@ -132,7 +132,7 @@ function Hero() {
       <Header />
 
       {/* location badge */}
-      <div className="hero-location-wrap hidden md:block">
+      <div className="hero-location-wrap">
         <div className="hero-location-pill rise flex items-center whitespace-nowrap rounded-full bg-white/60 backdrop-blur" style={{ animationDelay: "0.1s" }}>
           <span className="hero-location-emoji">📍</span>
           <span>Based in {profile.address}</span>
@@ -162,29 +162,28 @@ function Hero() {
         />
       </div>
 
-      {/* left: availability */}
-      <div className="hero-availability rise absolute z-20 hidden md:block" style={{ animationDelay: "0.7s" }}>
-        <div className="hero-availability-pill flex items-center rounded-full bg-white shadow-sm">
-          <span className="hero-availability-icon grid place-items-center rounded-full bg-lime/40">
-            <span className="hero-availability-dot rounded-full bg-lime shadow-[0_0_0_4px_rgba(180,242,60,0.4)]" />
-          </span>
-          Available for new opportunities
+      {/* left: currently working */}
+      <div className="hero-availability rise absolute z-20" style={{ animationDelay: "0.7s" }}>
+        <div className="hero-availability-pill flex items-center rounded-full">
+          <span className="hero-availability-dot rounded-full" />
+          Currently working
         </div>
       </div>
 
       {/* right: tagline */}
-      <p className="hero-tagline rise absolute z-20 hidden md:block" style={{ animationDelay: "0.8s" }}>
+      <p className="hero-tagline rise absolute z-20" style={{ animationDelay: "0.8s" }}>
         passionate about organising data, people and ideas into smooth, reliable digital workflows.
       </p>
 
       {/* bottom-left: stats */}
-      <div className="hero-stats rise absolute z-20 hidden items-center md:flex" style={{ animationDelay: "0.9s" }}>
+      <div className="hero-stats rise absolute z-20 flex items-center" style={{ animationDelay: "0.9s" }}>
         <div className="flex shrink-0 -space-x-3">
           <span className="hero-stat-avatar grid place-items-center rounded-full bg-ink text-white ring-2 ring-white">اردو</span>
           <span className="hero-stat-avatar grid place-items-center rounded-full bg-lime font-medium ring-2 ring-white">EN</span>
         </div>
         <p className="hero-stat-copy text-black/70">
-          Bilingual professional with <b className="font-medium text-ink">4+ years</b> across data, events &amp; sales.
+          <span className="sm:hidden">Bilingual · <b className="font-medium text-ink">4+ yrs</b> across data &amp; sales.</span>
+          <span className="hidden sm:inline">Bilingual professional with <b className="font-medium text-ink">4+ years</b> across data, events &amp; sales.</span>
         </p>
       </div>
 
@@ -220,11 +219,13 @@ function Marquee() {
 
 const chipData: { label: string; color: string; rot: string; pos: string }[] = [
   { label: "Data Entry", color: "#ff6b2c", rot: "6deg", pos: "left-[2%] top-[4%]" },
-  { label: "MS Excel", color: "#2f9bff", rot: "5deg", pos: "left-[6%] top-[38%]" },
-  { label: "MetaTrader 5", color: "#222", rot: "-4deg", pos: "left-[1%] top-[72%]" },
+  { label: "Office Management", color: "#8b5cf6", rot: "-6deg", pos: "left-[4%] top-[21%]" },
+  { label: "MS Excel", color: "#2f9bff", rot: "5deg", pos: "left-[6%] top-[48%]" },
+  { label: "MetaTrader 5", color: "#222", rot: "-4deg", pos: "left-[1%] top-[76%]" },
   { label: "Client Relations", color: "#ffc61a", rot: "-5deg", pos: "right-[2%] top-[2%]" },
-  { label: "WordPress", color: "#f43fa5", rot: "6deg", pos: "right-[4%] top-[38%]" },
-  { label: "HTML · CSS · JS", color: "#2ccf58", rot: "4deg", pos: "right-[0%] top-[72%]" },
+  { label: "Speaking & Handling", color: "#06b6d4", rot: "6deg", pos: "right-[3%] top-[21%]" },
+  { label: "WordPress", color: "#f43fa5", rot: "6deg", pos: "right-[4%] top-[48%]" },
+  { label: "HTML · CSS · JS", color: "#2ccf58", rot: "4deg", pos: "right-[0%] top-[76%]" },
 ];
 
 function Chip({ label, color, rot }: { label: string; color: string; rot: string }) {
@@ -244,7 +245,7 @@ function Chip({ label, color, rot }: { label: string; color: string; rot: string
 function About() {
   return (
     <section id="about" className="relative mx-auto max-w-[1200px] px-5 pb-24 pt-24 sm:pt-32">
-      <div className="pointer-events-none absolute inset-x-0 top-0 hidden h-full md:block">
+      <div className="pointer-events-none absolute inset-x-0 top-0 hidden h-full lg:block">
         {chipData.map((c) => (
           <div key={c.label} className={`absolute ${c.pos}`}>
             <Chip {...c} />
@@ -273,33 +274,33 @@ const cardBase = "glass relative flex h-full flex-col rounded-[2rem] p-7 sm:p-8"
 
 function ExperienceSection() {
   return (
-    <section className="relative mx-auto max-w-[1200px] px-5 py-16">
+    <section className="relative mx-auto max-w-[1200px] px-5 py-12 sm:py-16">
       <SectionHead id="experience" eyebrow="My Journey" title="Work Experience" />
-      <Carousel cardClass="w-[88%] sm:w-[420px]">
+      <Carousel cardClass="w-[86%] sm:w-[370px]">
         {experience.map((e, i) => (
-          <article key={e.role + e.company} className={`${cardBase} min-h-[500px]`}>
-            <div className="flex items-start justify-between">
-              <span className="text-6xl font-light tracking-tight">{String(i + 1).padStart(2, "0")}</span>
+          <article key={e.role + e.company} className={`${cardBase} min-h-[360px] !rounded-[1.75rem] !p-6`}>
+            <div className="flex items-start justify-between gap-3">
+              <span className="text-4xl font-light tracking-tight text-black/80">{String(i + 1).padStart(2, "0")}</span>
               {e.current ? (
-                <span className="flex items-center gap-2 rounded-full bg-lime px-3 py-1.5 text-xs font-medium">
-                  <span className="h-2 w-2 animate-pulse rounded-full bg-ink" /> Currently working
+                <span className="flex items-center gap-2 rounded-full bg-lime px-3 py-1.5 text-[11px] font-medium">
+                  <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-ink" /> Currently working
                 </span>
               ) : (
-                <span className="rounded-full bg-black/5 px-3 py-1.5 text-xs text-black/60">{e.place}</span>
+                <span className="rounded-full bg-black/5 px-3 py-1.5 text-[11px] text-black/60">{e.place}</span>
               )}
             </div>
-            <div className="mt-auto pt-10">
-              <p className="font-serif text-lg italic text-black/50">{e.period}</p>
-              <h3 className="mt-1 text-3xl font-light leading-tight tracking-tight">{e.role}</h3>
-              <p className="mt-2 flex items-center gap-2 text-base font-medium">
-                <span className="h-2.5 w-2.5 rounded-full bg-lime ring-2 ring-lime/40" />
+            <div className="mt-auto pt-7">
+              <p className="font-serif text-base italic text-black/50">{e.period}</p>
+              <h3 className="mt-1 text-2xl font-light leading-snug tracking-tight">{e.role}</h3>
+              <p className="mt-1.5 flex flex-wrap items-center gap-2 text-sm font-medium">
+                <span className="h-2 w-2 rounded-full bg-lime ring-2 ring-lime/40" />
                 {e.company}
                 {e.current && <span className="font-normal text-black/50">· {e.place}</span>}
               </p>
-              <ul className="mt-5 space-y-2 text-sm leading-relaxed text-black/60">
+              <ul className="mt-4 space-y-1.5 text-[13px] leading-snug text-black/60">
                 {e.points.map((p) => (
                   <li key={p} className="flex gap-2">
-                    <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-black/40" />
+                    <span className="mt-[7px] h-1 w-1 shrink-0 rounded-full bg-black/40" />
                     {p}
                   </li>
                 ))}
@@ -314,20 +315,20 @@ function ExperienceSection() {
 
 function SkillsSection() {
   return (
-    <section className="relative mx-auto max-w-[1200px] px-5 py-16">
+    <section className="relative mx-auto max-w-[1200px] px-5 py-12 sm:py-16">
       <SectionHead id="skills" eyebrow="Toolkit" title="Skills & Strengths" />
-      <Carousel cardClass="w-[88%] sm:w-[420px]">
+      <Carousel cardClass="w-[86%] sm:w-[370px]">
         {skillGroups.map((g, i) => (
-          <article key={g.title} className={`${cardBase} min-h-[440px] ${i === 0 ? "!bg-ink !text-white" : ""}`}>
-            <span className={`text-6xl font-light tracking-tight ${i === 0 ? "text-lime" : ""}`}>{String(i + 1).padStart(2, "0")}</span>
-            <div className="mt-auto pt-10">
-              <h3 className="text-3xl font-light tracking-tight">{g.title}</h3>
-              <p className={`mt-1 font-serif text-lg italic ${i === 0 ? "text-white/50" : "text-black/50"}`}>{g.note}</p>
-              <div className="mt-5 flex flex-wrap gap-2">
+          <article key={g.title} className={`${cardBase} min-h-[320px] !rounded-[1.75rem] !p-6 ${i === 0 ? "glass-dark" : ""}`}>
+            <span className={`text-4xl font-light tracking-tight ${i === 0 ? "text-lime" : "text-black/80"}`}>{String(i + 1).padStart(2, "0")}</span>
+            <div className="mt-auto pt-7">
+              <h3 className="text-2xl font-light tracking-tight">{g.title}</h3>
+              <p className={`mt-1 font-serif text-base italic ${i === 0 ? "text-white/50" : "text-black/50"}`}>{g.note}</p>
+              <div className="mt-4 flex flex-wrap gap-1.5">
                 {g.items.map((s) => (
                   <span
                     key={s}
-                    className={`rounded-full px-3.5 py-1.5 text-sm ${i === 0 ? "bg-white/10 text-white" : "bg-white text-ink shadow-sm ring-1 ring-black/5"}`}
+                    className={`rounded-full px-3 py-1.5 text-[13px] leading-none ${i === 0 ? "bg-white/10 text-white" : "bg-white text-ink shadow-sm ring-1 ring-black/5"}`}
                   >
                     {s}
                   </span>
@@ -343,20 +344,20 @@ function SkillsSection() {
 
 function EducationSection() {
   return (
-    <section className="relative mx-auto max-w-[1200px] px-5 py-16">
+    <section className="relative mx-auto max-w-[1200px] px-5 py-12 sm:py-16">
       <SectionHead id="education" eyebrow="Learning" title="Education" />
-      <Carousel cardClass="w-[88%] sm:w-[420px]">
+      <Carousel cardClass="w-[86%] sm:w-[370px]">
         {education.map((e, i) => (
-          <article key={e.title} className={`${cardBase} min-h-[420px]`}>
-            <div className="flex items-start justify-between">
-              <span className="text-6xl font-light tracking-tight">{String(i + 1).padStart(2, "0")}</span>
-              <span className="rounded-full bg-lime px-3 py-1.5 text-xs font-medium">{e.period}</span>
+          <article key={e.title} className={`${cardBase} min-h-[300px] !rounded-[1.75rem] !p-6`}>
+            <div className="flex items-start justify-between gap-3">
+              <span className="text-4xl font-light tracking-tight text-black/80">{String(i + 1).padStart(2, "0")}</span>
+              <span className="rounded-full bg-lime px-3 py-1.5 text-[11px] font-medium">{e.period}</span>
             </div>
-            <div className="mt-auto pt-10">
-              <h3 className="text-3xl font-light leading-tight tracking-tight">{e.title}</h3>
-              <p className="mt-2 text-base font-medium">{e.school}</p>
-              <p className="font-serif text-lg italic text-black/50">{e.place}</p>
-              <p className="mt-4 text-sm leading-relaxed text-black/60">{e.detail}</p>
+            <div className="mt-auto pt-7">
+              <h3 className="text-2xl font-light leading-snug tracking-tight">{e.title}</h3>
+              <p className="mt-1.5 text-sm font-medium">{e.school}</p>
+              <p className="font-serif text-base italic text-black/50">{e.place}</p>
+              <p className="mt-3 text-[13px] leading-snug text-black/60">{e.detail}</p>
             </div>
           </article>
         ))}
@@ -404,12 +405,19 @@ function CertificatesSection() {
           </a>
         ))}
       </Carousel>
-      <p className="mt-2 text-center text-sm text-black/50">
-        <a className="underline underline-offset-4 hover:text-ink" href={whatsappLink("Hi Rabia! Could you please share the certificates and your CV?")} target="_blank" rel="noreferrer">
-          WhatsApp me
-        </a>{" "}
-        if you need any certificate or CV.
-      </p>
+      <div className="relative z-10 mt-6 flex justify-center">
+        <a
+          href={whatsappLink("Hi Rabia! Could you please share the certificates and your CV?")}
+          target="_blank"
+          rel="noreferrer"
+          className="wa-banner"
+        >
+          <span className="wa-banner-icon">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-0.297-0.149-1.758-0.867-2.03-0.967c-0.273-0.099-0.471-0.148-0.67 0.15c-0.197 0.297-0.767 0.966-0.94 1.164c-0.173 0.199-0.347 0.223-0.644 0.075c-0.297-0.15-1.255-0.463-2.39-1.475c-0.883-0.795-1.48-1.776-1.653-2.074c-0.173-0.297-0.018-0.458 0.13-0.606c0.134-0.133 0.297-0.347 0.446-0.52c0.149-0.174 0.198-0.298 0.297-0.497c0.1-0.198 0.05-0.371-0.025-0.52c-0.074-0.149-0.669-1.612-0.916-2.207c-0.242-0.579-0.487-0.5-0.669-0.51c-0.173-0.008-0.371-0.01-0.57-0.01c-0.198 0-0.52 0.074-0.792 0.372c-0.272 0.297-1.04 1.016-1.04 2.479c0 1.462 1.065 2.875 1.213 3.074c0.149 0.198 2.096 3.2 5.077 4.487c0.709 0.306 1.262 0.49 1.694 0.627c0.712 0.226 1.36 0.194 1.871 0.118c0.571-0.085 1.758-0.718 2.006-1.41c0.248-0.694 0.248-1.289 0.173-1.41c-0.074-0.124-0.272-0.198-0.57-0.347m-5.421 4.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a8.19 8.19 0 01-1.26-4.403 8.203 8.203 0 018.224-8.207c2.196 0 4.26.858 5.815 2.414a8.187 8.187 0 012.031 5.822 8.203 8.203 0 01-8.207 8.207m7.127-17.595A10.154 10.154 0 0012.05 0C5.495 0 .16 5.334.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" /></svg>
+          </span>
+          <span>WhatsApp me if you need any certificate or CV</span>
+        </a>
+      </div>
     </section>
   );
 }
